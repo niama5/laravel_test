@@ -18,9 +18,11 @@ Route::get('/', function () {
     //$links = \App\Link::all();
     $links = (new \App\Link)->wasl();
     
-    $test = \App\Test::all(); 
+    //$test = \App\Test::all(); 
+    //$test=['id'=>'a', 'nazwa'=>'b'];
    
-    return view('welcome'    , ['links' => $links, 'tests' => $test ] );
+//    return view('welcome'    , ['links' => $links, 'tests' => $test ] );
+     return view('welcome'    , ['links' => $links ] );
 });
 
 

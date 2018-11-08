@@ -113,9 +113,12 @@
             </div>
 
             <div class="row">
+                
+                {{--
                    @foreach ($tests as $test)
                    <div class="col"><label>"{{ $test->id }}" - {{ $test->nazwa }}</label></div>
                    @endforeach
+                   --}}
             </div>
 
             </div>

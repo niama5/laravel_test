@@ -27,4 +27,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    protected $test='jakis wpisss';
+    protected $appends=['test'];
+
+
+    public function getFieldAttribute()
+    {
+        return $this->test;
+    }
+    
+     public function getSetAttribute($val)
+    {
+        $this->test=$val;
+    }
 }
