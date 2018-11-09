@@ -1,1 +1,2 @@
 pierwsza zmiana
+zmiana w katal GIT/LARAVEL
