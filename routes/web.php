@@ -23,6 +23,7 @@ Route::get('/', function () {
    
 //    return view('welcome'    , ['links' => $links, 'tests' => $test ] );
      return view('welcome'    , ['links' => $links ] );
+   // return view('/auth/login');
 });
 
 

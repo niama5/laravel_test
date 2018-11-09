@@ -44,24 +44,20 @@ class LoginController extends Controller
     
       public function login(Request $request)
     {
-      
-          
-             \App\Jqwidgetshelper::writeDataToFile(env('TEST'));
-          
-          
-           $user = User::find(1);
-           $user->field =$user->field.' lub inny  wpis';
+        //\App\Jqwidgetshelper::writeDataToFile('jakas tresc');
+
+        $user = User::find(1);
+        $user->field =$user->field.' lub inny  wpis';
            
-          // \Illuminate\Log::info('some message');
-           
-            //$adServer = '145.237.237.85';
-           $adServer=env('LDAP_SERVER');
+        //$adServer = '145.237.237.85';
+        $adServer=env('LDAP_SERVER');
 
 	$ldap = ldap_connect($adServer);
           
-          //$ldaprdn = 'mf' . "\\cfyl"  ;
-        $ldaprdn = "cn=test,dc=example,dc=com";
-        //$ldaprdn = "example\test";
+        //$ldaprdn = 'mf' . "\\cfyl"  ;
+        //$ldaprdn = "cn=test,dc=example,dc=com";
+        $ldaprdn = env('LDAP_BINDING_START').request('login').env('LDAP_BINDING_END');
+  
         
 	ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
 	ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
@@ -70,7 +66,7 @@ class LoginController extends Controller
 	if (!$bind) {
 		@ldap_close($ldap);		
 		//return view('login', ['password']);
-                return redirect()->back()->withErrors(['password'=>'Your username/password combination was incorrect']);
+                return redirect()->back()->withErrors(['password'=>'Nieprawidłowy login lub hasło']);
 	} 
         else{
              \App\Jqwidgetshelper::writeDataToFile($user->email);
@@ -79,6 +75,9 @@ class LoginController extends Controller
             \Auth::login($user, false);
     //          if(request('email')=="ttt@2p.pl"){
                    return  redirect('/');
+            
+            //$links = (new \App\Link)->wasl();
+            //return view('welcome'    , ['links' => $links ] );
         }
            
           
