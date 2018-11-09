@@ -1,2 +1,6 @@
 pierwsza zmiana
+<<<<<<< HEAD
 zmiana w katal GIT/LARAVEL
+=======
+zamiana w kat. _LARAVEL
+>>>>>>> 380641186ad3392238ef6cfc6c4c0e27725469a2
